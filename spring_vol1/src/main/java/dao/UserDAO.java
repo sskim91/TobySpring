@@ -8,8 +8,8 @@ public class UserDAO {
 
     private ConnectionMaker connectionMaker;
 
-    public UserDAO() {
-        connectionMaker = new DConnectionMaker();
+    public UserDAO(ConnectionMaker connectionMaker) {
+        this.connectionMaker = connectionMaker;
     }
 
     public void add(User user) throws ClassNotFoundException, SQLException {
