@@ -10,6 +10,7 @@ public class UserDAO {
 
     public UserDAO(ConnectionMaker connectionMaker) {
         this.connectionMaker = connectionMaker;
+        System.out.println(this.connectionMaker.toString());
     }
 
     public void add(User user) throws ClassNotFoundException, SQLException {
