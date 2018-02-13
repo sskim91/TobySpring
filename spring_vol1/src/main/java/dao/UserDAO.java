@@ -8,9 +8,8 @@ public class UserDAO {
 
     private ConnectionMaker connectionMaker;
 
-    public UserDAO(ConnectionMaker connectionMaker) {
+    public void setConnectionMaker(ConnectionMaker connectionMaker) {
         this.connectionMaker = connectionMaker;
-        System.out.println(this.connectionMaker.toString());
     }
 
     public void add(User user) throws ClassNotFoundException, SQLException {
@@ -49,10 +48,12 @@ public class UserDAO {
         return user;
     }
 
+    /* 메소드 추출
     private Connection getConnection() throws ClassNotFoundException, SQLException{
 
         Class.forName("com.mysql.jdbc.Driver");
         Connection c = DriverManager.getConnection("jdbc:mysql://localhost/springbook", "spring", "springbook1234");
         return c;
     }
+    */
 }
