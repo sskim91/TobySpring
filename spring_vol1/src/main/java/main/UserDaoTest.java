@@ -1,31 +1,28 @@
 package main;
 
-import dao.DaoFactory;
 import dao.UserDAO;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
 
+import javax.sql.DataSource;
 import java.sql.SQLException;
 
 public class UserDaoTest {
-    public static void main(String[] args) throws ClassNotFoundException, SQLException{
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
 
-        ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
-        UserDAO dao = context.getBean("userDAO", UserDAO.class);
+        //JAVA 코드 설정 방식
+//        ApplicationContext javacontext = new AnnotationConfigApplicationContext(DaoFactory.class);
+//        UserDAO userDAO = javacontext.getBean("userDAO", UserDAO.class);
+//        System.out.println("JAVA 설정 방식");
+//        System.out.println(userDAO.get("sskim").getId());
 
-        DaoFactory factory = new DaoFactory();
-        UserDAO dao1 = factory.userDAO();
-        UserDAO dao2 = factory.userDAO();
 
-        UserDAO dao3 = context.getBean("userDAO", UserDAO.class);
-        UserDAO dao4 = context.getBean("userDAO", UserDAO.class);
-
-        System.out.println(dao3);
-        System.out.println(dao4);
-
-        System.out.println(dao1);
-        System.out.println(dao2);
-
+        //XML 설정 방식
+        ApplicationContext xmlcontext = new GenericXmlApplicationContext("applicationContext.xml");
+        UserDAO userDAO = xmlcontext.getBean("userDAO", UserDAO.class);
+        System.out.println("XML 설정 방식");
+        System.out.println(userDAO.get("sskim").getId());
     }
 }

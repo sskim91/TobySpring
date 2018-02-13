@@ -9,7 +9,7 @@ public class CountingDaoFactory {
     @Bean
     public UserDAO userDAO() {
         UserDAO userDAO = new UserDAO();
-        userDAO.setConnectionMaker(connectionMaker());
+     // userDAO.setConnectionMaker(connectionMaker());
         return userDAO;
         //모든 DAO는 여전히 ConnectionMaker()에서 만들어지는 오브젝트를 사용한다.
     }
